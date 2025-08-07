@@ -13,7 +13,7 @@ Bienvenido a mi portafolio como Data Engineer. Aquí encontrarás proyectos prá
 ### 1. ETL con múltiples DAGs en Airflow
 > Proyecto con múltiples archivos CSV procesados mediante DAGs independientes en Airflow, validación de datos y movimiento de archivos procesados.
 
-📂 [etl_airflow_multiple_dags/](etl_airflow_multiple_dags/)
+📂 [etl_airflow_multiple/](etl_airflow_multiple/)
 
 ---
 
