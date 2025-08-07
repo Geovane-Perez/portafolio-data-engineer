@@ -1,0 +1,6 @@
+id,nombre,edad,correo,ciudad,es_adulto,rango_edad
+4,Carmen,27,carmen@gmail.com,Tijuana,true,no es
+5,Pedro,35,pedro@gmail.com,Puebla,true,adulto
+2,Ana,30,ana@hotmail.com,Guadalajara,true,adulto
+3,Luis,22,luis@yahoo.com,Monterrey,true,no es
+1,Juan,25,juan@gmail.com,Ciudad de México,true,no es

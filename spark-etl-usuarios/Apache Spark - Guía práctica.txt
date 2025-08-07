@@ -1,0 +1,132 @@
+# ✅ Apache Spark - Guía práctica en PySpark (Google Colab)
+Este archivo contiene todos los comandos Spark que usamos, explicados paso a paso, con notas útiles sobre qué hace cada instrucción.
+
+---
+
+## 1. 🔧 Inicializar sesión Spark
+python
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.appName("EjemploSpark").getOrCreate()
+
+*Explicación:* Se crea una sesión de Spark. SparkSession es el punto de entrada principal para trabajar con DataFrames en PySpark.
+
+---
+
+## 2. 📥 Leer un archivo CSV
+python
+df = spark.read.csv("/content/usuarios.csv", header=True, inferSchema=True)
+
+*Explicación:* Se lee un archivo CSV y se crea un DataFrame.  
+- header=True: Usa la primera línea como nombres de columnas.  
+- inferSchema=True: Detecta automáticamente los tipos de datos.
+
+---
+
+## 3. 👀 Ver primeras filas
+python
+df.show()
+
+*Explicación:* Muestra las primeras 20 filas del DataFrame. Útil para inspeccionar los datos.
+
+---
+
+## 4. 📊 Ver el esquema del DataFrame
+python
+df.printSchema()
+
+*Explicación:* Muestra las columnas, tipos de datos y si aceptan nulos. Equivalente a DESCRIBE en SQL.
+
+---
+
+## 5. 📈 Estadísticas generales
+python
+df.describe().show()
+
+*Explicación:* Devuelve estadísticas básicas como media, desviación estándar, etc.
+
+---
+
+## 6. 🎯 Seleccionar columnas específicas
+python
+df.select("nombre", "edad").show()
+
+*Explicación:* Muestra solo las columnas especificadas.
+
+---
+
+## 7. 🎛️ Filtrar datos
+python
+from pyspark.sql.functions import col
+df.filter(col("edad") > 30).show()
+
+*Explicación:* Filtra los registros donde la edad sea mayor a 30.  
+Es equivalente a WHERE edad > 30 en SQL.
+
+---
+
+## 8. 🧮 Agregaciones por grupo
+python
+from pyspark.sql.functions import avg, max, min
+df.groupBy("ciudad").agg(
+    avg("edad").alias("edad_promedio"),
+    max("edad").alias("edad_maxima"),
+    min("edad").alias("edad_minima")
+).show()
+
+*Explicación:* Agrupa por ciudad y calcula agregados. .alias() cambia el nombre de la columna resultado.
+
+---
+
+## 9. ➕ Agregar columna condicional
+python
+from pyspark.sql.functions import when
+
+df = df.withColumn("es_adulto", when(col("edad") >= 18, True).otherwise(False))
+
+*Explicación:* Crea la columna es_adulto, que vale True si edad >= 18, y False en caso contrario.
+
+---
+
+## 10. 🧠 Agregar columna con rangos
+python
+df = df.withColumn("rango_edad", 
+    when(col("edad") < 18, "menor")
+    .when((col("edad") >= 18) & (col("edad") < 30), "no es")
+    .when((col("edad") >= 30) & (col("edad") < 60), "adulto")
+    .otherwise("mayor")
+)
+
+*Explicación:* Se usa withColumn y when para asignar categorías según rangos de edad.
+
+---
+
+## 11. 🧪 Filtrar múltiples condiciones
+python
+df_filtrado = df.filter((col("es_adulto") == True) & (col("edad") > 40))
+
+*Explicación:* Crea un nuevo DataFrame con condiciones múltiples (AND lógico).
+
+---
+
+## 12. 💾 Guardar DataFrame en CSV
+python
+df_filtrado.write.mode("overwrite").option("header", True).csv("/content/usuarios_filtrados")
+
+*Explicación:* Guarda el DataFrame como CSV.  
+- .mode("overwrite"): Reemplaza si ya existe.  
+- .option("header", True): Agrega cabecera con nombres de columnas.
+
+---
+
+## 🧠 GLOSARIO RÁPIDO
+
+- df: variable estándar para representar un DataFrame.
+- show(): imprime las primeras filas del DataFrame.
+- import: se usa para traer funciones necesarias.
+- col(): accede a una columna por nombre.
+- withColumn(): crea o reemplaza columnas.
+- when(): estructura condicional (como if).
+- filter(): filtra filas según condición.
+- groupBy().agg(): agrupa filas y aplica funciones como avg, max, etc.
+
+---
