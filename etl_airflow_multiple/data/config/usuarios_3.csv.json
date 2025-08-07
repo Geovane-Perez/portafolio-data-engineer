@@ -1,0 +1,13 @@
+{
+  "tabla_destino": "users",
+  "mapeo_columnas": {
+    "id": "id",
+    "name": "name",
+    "age": "age",
+    "email": "email"
+  },
+  "validaciones": {
+    "email": "not_null",
+    "age": "positive_integer"
+  }
+}

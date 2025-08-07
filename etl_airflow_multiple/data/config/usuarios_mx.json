@@ -1,0 +1,11 @@
+{
+  "tabla_destino": "users",
+  "columnas": ["id", "name", "age", "email"],
+  "validar_no_nulos": ["email"],
+  "tipos": {
+    "id": "int",
+    "name": "str",
+    "age": "int",
+    "email": "str"
+  }
+}
