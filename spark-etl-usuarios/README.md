@@ -14,7 +14,7 @@ Este proyecto realiza un flujo completo de ETL usando PySpark, trabajando sobre 
 | Archivo | Descripción |
 |--------|-------------|
 | usuarios.csv | Archivo original de entrada |
-| etl_spark.ipynb | Notebook con todo el procesamiento paso a paso |
+| etl-spark.ipynb | Notebook con todo el procesamiento paso a paso |
 | usuarios_transformados.csv | Archivo resultado con nuevas columnas |
 | estadisticas_ciudad.csv | Estadísticas por ciudad (promedio de edad, total) |
 | comandos_spark.txt | Archivo con todos los comandos explicados |
@@ -23,4 +23,5 @@ Este proyecto realiza un flujo completo de ETL usando PySpark, trabajando sobre 
 
 - Uso de .read.csv(), .withColumn(), .filter(), .groupBy()
 - Lógica condicional con when()
+
 - Escritura de DataFrames como CSV
