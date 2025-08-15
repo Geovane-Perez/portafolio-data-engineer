@@ -1,6 +1,6 @@
 🛠️ Proyecto ETL Dinámico con Airflow y PostgreSQL
 
-Fecha de implementación: Agosto 2025
+Fecha de implementación: Agosto 2025 
 Autor: Geovane Pérez
 Repositorio: portafolio-data-engineer
 
@@ -72,5 +72,6 @@ Esto se ejecuta internamente mediante el BashOperator definido en el DAG.
 	•	Archivos con errores son movidos y logueados.
 	•	El proceso es flexible: puedes añadir más archivos .csv + .json sin modificar el código.
 	•	Proyecto listo para escalar hacia nuevos datasets o formatos.
+
 
 
